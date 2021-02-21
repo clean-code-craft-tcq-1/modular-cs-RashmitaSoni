@@ -1,8 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using TelCo.ColorCoderClasses;
 using TelCo.ColorCoderExecptions;
-
 namespace TelCo.ColorCoderFunctions
 { /// <summary>
   /// This class provides the color coding and mapping of Colors number to color and color to Colors number.
@@ -16,7 +16,6 @@ namespace TelCo.ColorCoderFunctions
             AnyExceptions.getArgumentOutOfRangeException(pairNumber, minorSize, majorSize);
             int majorIndex = (pairNumber - 1) / minorSize;
             int minorIndex = (pairNumber - 1) % minorSize;
-
             ColorPair Colors = new ColorPair()
             {
                 majorColor = ColorGroup.Major[majorIndex],
@@ -26,25 +25,26 @@ namespace TelCo.ColorCoderFunctions
         }
         public static int FetchPairNumberFromColor(ColorPair Colors)
         {
-            int majorIndex = getIndex(ColorGroup.Major, Colors.majorColor); 
-            int minorIndex = getIndex(ColorGroup.Minor, Colors.minorColor);
+            int majorIndex = -1, minorIndex = -1;
             int PairNumber;
-            AnyExceptions.getArgumentException(minorIndex, majorIndex, Colors);
-            PairNumber = (majorIndex * ColorGroup.Minor.Length) + (minorIndex + 1);
-            return PairNumber;
-        }
-        public static int getIndex(ColorGroup [] Group, ColorPair Colors)
-        {
-            int index = -1;
-            for (int i = 0; i < Group.Length; i++)
+            for (int i = 0; i < ColorGroup.Major.Length; i++)
             {
-                if (Group[i] == Colors.majorColor)
+                if (ColorGroup.Major[i] == Colors.majorColor)
                 {
-                    index = i;
+                    majorIndex = i;
                     break;
                 }
             }
-            return index; 
+            for (int i = 0; i < ColorGroup.Minor.Length; i++)
+            {
+                if (ColorGroup.Minor[i] == Colors.minorColor)
+                {   minorIndex = i;
+                    break;
+                }
+            }
+            AnyExceptions.getArgumentException(minorIndex, majorIndex, Colors);
+            PairNumber = (majorIndex * ColorGroup.Minor.Length) + (minorIndex + 1);
+            return PairNumber;
         }
     }
 }

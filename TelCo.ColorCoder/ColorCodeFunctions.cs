@@ -1,3 +1,5 @@
+using System;
+using System.Drawing;
 using TelCo.ColorCoderClasses;
 using TelCo.ColorCoderExecptions;
 
@@ -20,7 +22,6 @@ namespace TelCo.ColorCoderFunctions
                 majorColor = ColorGroup.Major[majorIndex],
                 minorColor = ColorGroup.Minor[minorIndex]
             };
-
             return Colors;
         }
         public static int FetchPairNumberFromColor(ColorPair Colors)
@@ -28,7 +29,6 @@ namespace TelCo.ColorCoderFunctions
             int majorIndex = getIndex(ColorGroup.Major, Colors.majorColor); 
             int minorIndex = getIndex(ColorGroup.Minor, Colors.minorColor);
             int PairNumber;
-
             AnyExceptions.getArgumentException(minorIndex, majorIndex, Colors);
             PairNumber = (majorIndex * ColorGroup.Minor.Length) + (minorIndex + 1);
             return PairNumber;

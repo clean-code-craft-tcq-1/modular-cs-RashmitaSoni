@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using TelCo.ColorCoderPair;
 namespace TelCo.ColorCoder
-{
-    /// <summary>
+{   /// <summary>
     /// This class provides the color coding and mapping of Colors number to color and color to Colors number.
     /// </summary>
     public class ColorGroup

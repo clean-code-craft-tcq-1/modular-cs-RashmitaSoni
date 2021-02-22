@@ -3,9 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 
 namespace TelCo.ColorCoderClasses
-{ /// <summary>
-  /// This class provides the color coding and mapping of Colors number to color and color to Colors number.
-  /// </summary>
+{ 
     public class ColorGroup
     {
         public static Color[] Major;
@@ -20,10 +18,33 @@ namespace TelCo.ColorCoderClasses
     public class ColorPair
     {
         internal Color majorColor, minorColor;
+        public static int getMajorIndex(ColorPair Colors, int majorIndex = -1)
+        {
+            for (int i = 0; i < ColorGroup.Major.Length; i++)
+            {
+                if (ColorGroup.Major[i] == Colors.majorColor)
+                {
+                    majorIndex = i;
+                    break;
+                }
+            }
+            return majorIndex;
+        }
+        public static int getMinorIndex(ColorPair Colors, int minorIndex = -1)
+        {
+            for (int i = 0; i < ColorGroup.Minor.Length; i++)
+            {
+                if (ColorGroup.Minor[i] == Colors.minorColor)
+                {
+                    minorIndex = i;
+                    break;
+                }
+            }
+            return minorIndex;
+        }
         public override string ToString()
         {
             return string.Format("MajorColor:{0}, MinorColor:{1}", majorColor.Name, minorColor.Name);
         }
     }
-       
 }

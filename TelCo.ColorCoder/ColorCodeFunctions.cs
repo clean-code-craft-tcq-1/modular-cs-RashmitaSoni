@@ -25,26 +25,20 @@ namespace TelCo.ColorCoderFunctions
         }
         public static int FetchPairNumberFromColor(ColorPair Colors)
         {
-            int majorIndex = -1, minorIndex = -1;
+            int majorIndex = ColorPair.getMajorIndex(Colors); 
+            int minorIndex = ColorPair.getMinorIndex(Colors);
             int PairNumber;
-            for (int i = 0; i < ColorGroup.Major.Length; i++)
-            {
-                if (ColorGroup.Major[i] == Colors.majorColor)
-                {
-                    majorIndex = i;
-                    break;
-                }
-            }
-            for (int i = 0; i < ColorGroup.Minor.Length; i++)
-            {
-                if (ColorGroup.Minor[i] == Colors.minorColor)
-                {   minorIndex = i;
-                    break;
-                }
-            }
             AnyExceptions.getArgumentException(minorIndex, majorIndex, Colors);
             PairNumber = (majorIndex * ColorGroup.Minor.Length) + (minorIndex + 1);
             return PairNumber;
+        }
+        public static void FetchReferenceManual()
+        {
+            for (int i = 1; i <= 25; i++)
+            {
+                ColorPair colorNames = FetchColorFromPairNumber(i);
+                Console.WriteLine("Color Pair Number: {0},Color Name: {1}\n", i, colorNames);
+            }
         }
     }
 }

@@ -6,43 +6,42 @@ using TelCo.ColorCoderClasses;
 
 namespace TelCo.ColorCoderTests
 {
+    /// <summary>
+    /// This class contains the test cases
+    /// </summary>
     public class ColorCoderTest
     {
-        private static int pairNumber;
-        private static ColorPair colorpair;
-        private static Color majorcolor, minorcolor; 
         private static void Main(string[] args)
         {
-            TestFetchColorFromPairNumber();
-            TestFetchPairNumberFromColor();
-            ColorCoderFunctions.ColorCoderFunctions.PrintReferenceManual();
-        }
-        public static void TestFetchColorFromPairNumber()
-        {
-            pairNumber = Convert.ToInt32(Console.ReadLine());
+            int pairNumber = 4;
             ColorPair testPair1 = ColorCoderFunctions.ColorCoderFunctions.FetchColorFromPairNumber(pairNumber);
             Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
-            if(pairNumber == 4)
-            {
-                Debug.Assert(testPair1.majorColor == Color.White && testPair1.minorColor == Color.Brown);
-            }
-            if (pairNumber == 5)
-            {
-                Debug.Assert(testPair1.majorColor == Color.White && testPair1.minorColor == Color.SlateGray);
-            }
-            if (pairNumber == 23)
-            {
-                Debug.Assert(testPair1.majorColor == Color.Violet && testPair1.minorColor == Color.Green);
-            }
-        }
-        public static void TestFetchPairNumberFromColor()
-        {
-            majorcolor = Color.Yellow;//Color.Red
-            minorcolor = Color.Green;//Color.Blue
-            colorpair = new ColorPair() { majorColor = majorcolor, minorColor = minorcolor };
-            pairNumber = ColorCoderFunctions.ColorCoderFunctions.FetchPairNumberFromColor(colorpair);
-            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", colorpair, pairNumber);
-            Debug.Assert(pairNumber == 18 || pairNumber == 6);
+            Debug.Assert(testPair1.majorColor == Color.White);
+            Debug.Assert(testPair1.minorColor == Color.Brown);
+
+            pairNumber = 5;
+            testPair1 = ColorCoderFunctions.ColorCoderFunctions.FetchColorFromPairNumber(pairNumber);
+            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
+            Debug.Assert(testPair1.majorColor == Color.White);
+            Debug.Assert(testPair1.minorColor == Color.SlateGray);
+
+            pairNumber = 23;
+            testPair1 = ColorCoderFunctions.ColorCoderFunctions.FetchColorFromPairNumber(pairNumber);
+            Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
+            Debug.Assert(testPair1.majorColor == Color.Violet);
+            Debug.Assert(testPair1.minorColor == Color.Green);
+
+            ColorPair testPair2 = new ColorPair() { majorColor = Color.Yellow, minorColor = Color.Green };
+            pairNumber = ColorCoderFunctions.ColorCoderFunctions.FetchPairNumberFromColor(testPair2);
+            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", testPair2, pairNumber);
+            Debug.Assert(pairNumber == 18);
+
+            testPair2 = new ColorPair() { majorColor = Color.Red, minorColor = Color.Blue };
+            pairNumber = ColorCoderFunctions.ColorCoderFunctions.FetchPairNumberFromColor(testPair2);
+            Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}", testPair2, pairNumber);
+            Debug.Assert(pairNumber == 6);
+
+            ColorCoderFunctions.ColorCoderFunctions.PrintReferenceManual();
         }
     }
 }

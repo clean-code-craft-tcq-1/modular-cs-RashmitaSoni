@@ -18,7 +18,7 @@ namespace TelCo.ColorCoderClasses
     public class ColorPair
     {
         internal Color majorColor, minorColor;
-        public static int getMajorIndex(ColorPair Colors, int majorIndex = -1)
+        public static int GetMajorColorGroupIndex(ColorPair Colors, int majorIndex = -1)
         {
             for (int i = 0; i < ColorGroup.Major.Length; i++)
             {
@@ -30,7 +30,7 @@ namespace TelCo.ColorCoderClasses
             }
             return majorIndex;
         }
-        public static int getMinorIndex(ColorPair Colors, int minorIndex = -1)
+        public static int GetMinorColorGroupIndex(ColorPair Colors, int minorIndex = -1)
         {
             for (int i = 0; i < ColorGroup.Minor.Length; i++)
             {

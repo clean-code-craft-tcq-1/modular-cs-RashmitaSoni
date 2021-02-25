@@ -7,13 +7,13 @@ namespace TelCo.ColorCoderFunctions
 { /// <summary>
   /// This class provides the color coding and mapping of Colors number to color and color to Colors number.
   /// </summary>
-    public class FetchColorOrPairNumber
+    public static class ColorCoderFunctions
     {
         public static ColorPair FetchColorFromPairNumber(int pairNumber)
         {
             int minorSize = ColorGroup.Minor.Length;
             int majorSize = ColorGroup.Major.Length;
-            AnyExceptions.getArgumentOutOfRangeException(pairNumber, minorSize, majorSize);
+            Exceptions.getArgumentOutOfRangeException(pairNumber, minorSize, majorSize);
             int majorIndex = (pairNumber - 1) / minorSize;
             int minorIndex = (pairNumber - 1) % minorSize;
             ColorPair Colors = new ColorPair()
@@ -25,14 +25,14 @@ namespace TelCo.ColorCoderFunctions
         }
         public static int FetchPairNumberFromColor(ColorPair Colors)
         {
-            int majorIndex = ColorPair.getMajorIndex(Colors); 
-            int minorIndex = ColorPair.getMinorIndex(Colors);
+            int majorIndex = ColorPair.GetMajorColorGroupIndex(Colors); 
+            int minorIndex = ColorPair.GetMinorColorGroupIndex(Colors);
             int PairNumber;
-            AnyExceptions.getArgumentException(minorIndex, majorIndex, Colors);
+            Exceptions.getArgumentException(minorIndex, majorIndex, Colors);
             PairNumber = (majorIndex * ColorGroup.Minor.Length) + (minorIndex + 1);
             return PairNumber;
         }
-        public static void FetchReferenceManual()
+        public static void PrintReferenceManual()
         {
             for (int i = 1; i <= 25; i++)
             {

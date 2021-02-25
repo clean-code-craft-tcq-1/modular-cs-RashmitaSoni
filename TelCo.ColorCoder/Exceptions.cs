@@ -6,7 +6,7 @@ namespace TelCo.ColorCoderExecptions
     /// <summary>
     /// This class contains different exception conditions and throw respective exceptions.
     /// </summary>
-    public class AnyExceptions
+    public static class Exceptions
     {
         public static void getArgumentOutOfRangeException(int pairNumber, int minorSize, int majorSize)
         {

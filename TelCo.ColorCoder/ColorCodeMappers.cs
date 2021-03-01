@@ -7,7 +7,7 @@ namespace TelCo.ColorCoderFunctions
 { /// <summary>
   /// This class provides the color coding and mapping of Colors number to color and color to Colors number.
   /// </summary>
-    public static class ColorCoderFunctions
+    public static class ColorCodeMappers
     {
         public static ColorPair FetchColorFromPairNumber(int pairNumber)
         {

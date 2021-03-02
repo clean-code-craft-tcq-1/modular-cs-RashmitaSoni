@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using TelCo.ColorCoderClasses;
 using TelCo.ColorCoderExecptions;
-namespace TelCo.ColorCoderFunctions
+namespace TelCo.ColorCodeMappers
 { /// <summary>
   /// This class provides the color coding and mapping of Colors number to color and color to Colors number.
   /// </summary>
